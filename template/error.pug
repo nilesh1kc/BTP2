@@ -1,0 +1,22 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title CodePen - 404 page
+  link(rel='stylesheet' href='/css/error.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo')
+  link(rel='stylesheet' href='./style.css')
+// partial:index.partial.html
+section.page_404
+  .container
+    .row
+      .col-sm-12
+        .col-sm-10.col-sm-offset-1.text-center
+          .four_zero_four_bg
+            h1.text-center 404
+          .contant_box_404
+            h3.h2
+              | Look like you&apos;re lost
+            p=msg
+            a.link_404(href='/login') Go to Login
+// partial

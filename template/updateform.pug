@@ -1,0 +1,65 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/updateform.css')
+        link(href='https://fonts.googleapis.com/css2?family=Niconne&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Niconne&display=swap' rel='stylesheet')
+        title(id='updateform')= data.title
+
+    body   
+        section.contact-container(style='box-shadow: black 0px 0px 10px;')
+            div(style='width: 100px; color: white; padding-left: 40px;')
+                br
+                a(style='font-size:xx-large; display: block; top: 40px; left:50px;') B
+                br
+                br
+                br
+                br
+                br
+                br
+                br
+                a(style='font-size:xx-large;') T
+                br
+                br
+                br
+                br
+                br
+                br
+                br
+                br
+                a(style='font-size:xx-large;') P
+            form.contact-form(style='z-index: 1000; box-shadow: black 0px 0px 10px;' action='/action_page.php')
+                .heading
+                    h2 DATABASE UPDATE
+                    p
+                .input
+                    a Lattitude: 
+                    i.fa-regular.fa-user
+                    input(name='lattitude' type='number' required)
+                .input
+                    a Longitude:
+                    i.fa-regular.fa-envelope
+                    input(name='longitude' type='number' required)
+                .input
+                    a Select:
+                    br
+                    i.fa-regular.fa-envelope
+                    select#select(name='select' style='width: 100%; border: 1px solid #d4d4d8; border-radius: 4px; height: 35px; font-size: 15px; text-align: center;')
+                        option(value='1') Type 1
+                        option(value='2') Type 2
+                        option(value='3') Type 3
+                        option(value='4') Type 4
+                .input
+                    a Similarity
+                    i.fa-regular.fa-envelope
+                    input(name='longitude' type='number' required='')
+                .input
+                    a Frequency
+                    i.fa-regular.fa-envelope
+                    input(name='longitude' type='number' required='')
+                br
+                input.button(id='submit' type='submit' value='Submit')
+            img#img1(src='/img/gif2.gif' style='height: 50vh; margin-top: 40px;')
+        script(src='/js/bundle.js')
