@@ -26,7 +26,6 @@ export const updateForm = async(e)=>{
             data : data
         };
         const res = await axios(config)
-        console.log(res.data)
         alert(res.data.message)
     }
 }

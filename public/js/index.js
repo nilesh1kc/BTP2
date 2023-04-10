@@ -2,7 +2,7 @@ import { callLogin } from './login';
 import { getLocation } from './map';
 import { updateForm } from './updateform';
 import { redirectToMaps,redirectToUpdate } from './navigator';
-
+import { performLogout } from './logout';
 const pgtitle = document.getElementsByTagName('title')[0].id
 if (pgtitle == 'login') {
     document.onreadystatechange = function () {
@@ -120,4 +120,8 @@ if (pgtitle == 'mapview') {
 
 if(pgtitle=='updateform'){
     document.getElementById('submit').addEventListener("click", updateForm)
+}
+
+if(pgtitle=='logout'){
+    document.getElementsByTagName('button')[0].addEventListener("click",performLogout)
 }

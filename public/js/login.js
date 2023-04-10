@@ -3,7 +3,7 @@ export const callLogin = async (e) => {
     e.preventDefault();
     const email = document.getElementsByTagName("input")[0].value;
     const password = document.getElementsByTagName("input")[1].value;
-    console.log(email, password)
+    // console.log(email, password)
     try {
         const res = await axios({
             method: 'POST',
@@ -13,12 +13,12 @@ export const callLogin = async (e) => {
                 password
             }
         });
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.status === 'success') {
             
             window.setTimeout(() => {
                 location.assign('/navigator');
-            }, 1500);
+            }, 1000);
         }
     } catch (err) {
         alert(err.response.data.message);

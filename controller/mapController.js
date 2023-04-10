@@ -25,7 +25,7 @@ exports.updateMap = catchAsync(async (req, res, next) => {
         location: { $geoWithin: { $centerSphere: [[lng * 1, lat * 1], radius] } }
     })
     if (!rd) {
-        console.log("Creating new doc")
+        // console.log("Creating new doc")
         rd = await road.create({ location });
 
         // res.status(200).json({

@@ -1,7 +1,7 @@
 doctype html
 head
   meta(charset='UTF-8')
-  title BTP
+  title(id='logout') BTP
   link(rel='stylesheet' href='/css/error.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css')
   link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo')
@@ -13,10 +13,11 @@ section.page_404
       .col-sm-12
         .col-sm-10.col-sm-offset-1.text-center
           .four_zero_four_bg
-            h1.text-center 404
+            h1.text-center= `Hey ${name}`
           .contant_box_404
-            h3.h2
-              | Look like you&apos;re lost
-            p=msg
-            a.link_404(href='/') Go to Login
+            h3.h2=msg
+            //-   | Look like you&apos;re lost
+            //- p=msg
+            button.link_404() Click to Logout
+            script(src= '/js/bundle.js')
 // partial

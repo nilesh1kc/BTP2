@@ -48,7 +48,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 
 exports.login = catchAsync(async (req, res, next) => {
-    console.log(req.body)
+    // console.log(req.body)
     const { email, password } = req.body;
 
     // 1) Check if email and password exist
@@ -68,7 +68,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
     // 1) Getting token and check of it's there
-    console.log("Running Auth")
+    // console.log("Running Auth")
     let token;
     if (
         req.headers.authorization &&
@@ -113,10 +113,11 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res) => {
-    res.cookie('jwt', 'loggedout', {
-        expires: new Date(Date.now() + 10 * 1000),
-        httpOnly: true
-    });
+    res.clearCookie("jwt");
+    // res.cookie('jwt', 'loggedout', {
+    //     expires: new Date(Date.now() + 10 * 1000),
+    //     httpOnly: true
+    // });
     res.status(200).json({ status: 'success' });
 };
 
