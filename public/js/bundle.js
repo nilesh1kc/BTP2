@@ -5449,7 +5449,7 @@ var callLogin = /*#__PURE__*/function () {
           if (res.data.status === 'success') {
             window.setTimeout(function () {
               location.assign('/navigator');
-            }, 1000);
+            }, 0);
           }
           _context.next = 13;
           break;

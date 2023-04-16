@@ -14,12 +14,12 @@ const roadSchema = new mongoose.Schema(
 		},
 		similarity: {
 			type: [Number],
-			default: [0, 0, 0, 0]
+			default: [0, 0, 0, 0,0]
 		}
 		,
 		frequency: {
 			type: [Number],
-			default: [0, 0, 0, 0]
+			default: [0, 0, 0, 0,0]
 		}
 		,
 		score: {
@@ -32,16 +32,20 @@ const roadSchema = new mongoose.Schema(
 roadSchema.index({ location: '2dsphere' });
 
 roadSchema.pre('save', function (next) {
-	for(const index in this.similarity ){
+	let frq =0, check = 1;
+	for(let index=0; index<5 ; index = index+1){
 		// console.log(this.similarity[index])
-		if (this.similarity[index] >= 0.3 && this.frequency[index] > 2) {
+		if (this.frequency[index] > 2 && this.frequency[index]>=frq) {
+			frq = this.frequency[index];
 			this.score = index + 1;
+			check = 0;
 			// console.log(this)
-			return next();
 		}
 	}
-	this.score = 0;
-	next();
+	if( check) {
+		this.score = 0;
+	}
+	return next();
 });
 
 const road = mongoose.model('road', roadSchema);

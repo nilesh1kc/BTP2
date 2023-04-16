@@ -18,7 +18,7 @@ export const callLogin = async (e) => {
             
             window.setTimeout(() => {
                 location.assign('/navigator');
-            }, 1000);
+            },0);
         }
     } catch (err) {
         alert(err.response.data.message);
