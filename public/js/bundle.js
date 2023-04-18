@@ -5588,7 +5588,7 @@ var redirectToUpdate = function redirectToUpdate() {
 };
 exports.redirectToUpdate = redirectToUpdate;
 var redirectToMaps = function redirectToMaps() {
-  window.location.href = "/map";
+  window.location.href = "/";
 };
 exports.redirectToMaps = redirectToMaps;
 },{}],"logout.js":[function(require,module,exports) {
@@ -5611,13 +5611,14 @@ var performLogout = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           e.preventDefault();
-          _context.prev = 1;
-          _context.next = 4;
+          console.log("Enterting");
+          _context.prev = 2;
+          _context.next = 5;
           return (0, _axios.default)({
             method: 'GET',
             url: '/api/v1/users/logout'
           });
-        case 4:
+        case 5:
           res = _context.sent;
           // console.log(res.data)
           if (res.data.status === 'success') {
@@ -5625,17 +5626,17 @@ var performLogout = /*#__PURE__*/function () {
               location.assign('/');
             }, 1000);
           }
-          _context.next = 11;
+          _context.next = 12;
           break;
-        case 8:
-          _context.prev = 8;
-          _context.t0 = _context["catch"](1);
+        case 9:
+          _context.prev = 9;
+          _context.t0 = _context["catch"](2);
           alert(_context.t0.response.data.message);
-        case 11:
+        case 12:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[1, 8]]);
+    }, _callee, null, [[2, 9]]);
   }));
   return function performLogout(_x) {
     return _ref.apply(this, arguments);
@@ -5714,10 +5715,29 @@ if (pgtitle == 'navigator') {
 if (pgtitle == 'mapview') {
   var fn = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var centerlocation, map, colorcode, data, _iterator, _step, feature, score, coordinates;
+      var loginbtn, logoutbtn, homebtn, centerlocation, map, colorcode, data, _iterator, _step, feature, score, coordinates;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
+            loginbtn = document.getElementById('login-button');
+            if (loginbtn) {
+              console.log("OK from login");
+              loginbtn.addEventListener("click", function () {
+                location.href = '/login';
+              });
+            }
+            logoutbtn = document.getElementById('logout-button');
+            if (logoutbtn) {
+              console.log("OK from logout");
+              logoutbtn.addEventListener("click", _logout.performLogout);
+            }
+            homebtn = document.getElementById('home-button');
+            if (homebtn) {
+              console.log("OK from home");
+              homebtn.addEventListener("click", function () {
+                location.href = '/navigator';
+              });
+            }
             mapboxgl.accessToken = 'pk.eyJ1IjoibmlsZXNobmtjIiwiYSI6ImNsZzlkc25tMDBvaGIzZ3Qzbmo0aXA1OWcifQ.pGCfpsT-o2xCcAjFwhT6Ew';
             // const geojson = {
             //     type: 'FeatureCollection',
@@ -5764,9 +5784,9 @@ if (pgtitle == 'mapview') {
               //respect to prefers-reduced-motion
             }));
             colorcode = ['', '#ff0000', '#ff6600', '#ffff00', '#99ff33', '#33cc33'];
-            _context.next = 7;
+            _context.next = 13;
             return (0, _map.getLocation)();
-          case 7:
+          case 13:
             data = _context.sent;
             if (data.status == 'success') {
               _iterator = _createForOfIteratorHelper(data.data);
@@ -5790,7 +5810,7 @@ if (pgtitle == 'mapview') {
                 _iterator.f();
               }
             }
-          case 9:
+          case 15:
           case "end":
             return _context.stop();
         }

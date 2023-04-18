@@ -1,6 +1,7 @@
 import axios from "axios";
 export const performLogout = async(e)=>{
     e.preventDefault();
+    console.log("Enterting")
     try {
         const res = await axios({
             method: 'GET',

@@ -26,13 +26,20 @@ exports.getNavigator = (req, res) => {
 exports.getUpdateForm = (req, res) => {
   // console.log("Running Forms")
   const data = {
-    title: "BTP"
+    title: "BTP",
   }
   res.status(200).render('updateform',{data})
 }
-exports.getMap = async(req, res) => {
-  const data = {
+exports.getMap = catchAsync(async(req, res) => {
+  let data = {
     title: "BTP"
+  }
+  if(req.cookies.jwt){
+    const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+    const currentUser = await User.findById(decoded.id);
+    data.isLoggedIn = true;
+    data.name = currentUser.name
   }
   res.status(200).render('map',{data})
 }
+);

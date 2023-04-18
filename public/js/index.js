@@ -1,7 +1,7 @@
 import { callLogin } from './login';
 import { getLocation } from './map';
 import { updateForm } from './updateform';
-import { redirectToMaps,redirectToUpdate } from './navigator';
+import { redirectToMaps, redirectToUpdate } from './navigator';
 import { performLogout } from './logout';
 const pgtitle = document.getElementsByTagName('title')[0].id
 if (pgtitle == 'login') {
@@ -48,12 +48,32 @@ if (pgtitle == 'navigator') {
         }
     };
     const buttons = document.getElementsByTagName('button')
-    buttons[0].addEventListener("click",redirectToUpdate)
-    buttons[1].addEventListener("click",redirectToMaps)
+    buttons[0].addEventListener("click", redirectToUpdate)
+    buttons[1].addEventListener("click", redirectToMaps)
 }
 
 if (pgtitle == 'mapview') {
     const fn = async () => {
+        const loginbtn = document.getElementById('login-button');
+        if (loginbtn) {
+            console.log("OK from login")
+            loginbtn.addEventListener("click", () => {
+                location.href = '/login'
+            });
+        }
+        const logoutbtn = document.getElementById('logout-button');
+        if(logoutbtn){
+            console.log("OK from logout")
+            logoutbtn.addEventListener("click", performLogout);
+        }
+        const homebtn = document.getElementById('home-button');
+        if(homebtn){
+            console.log("OK from home")
+            homebtn.addEventListener("click", () => {
+                location.href = '/navigator'
+            });
+        }
+
         mapboxgl.accessToken = 'pk.eyJ1IjoibmlsZXNobmtjIiwiYSI6ImNsZzlkc25tMDBvaGIzZ3Qzbmo0aXA1OWcifQ.pGCfpsT-o2xCcAjFwhT6Ew';
         // const geojson = {
         //     type: 'FeatureCollection',
@@ -99,7 +119,7 @@ if (pgtitle == 'mapview') {
             essential: true // This animation is considered essential with
             //respect to prefers-reduced-motion
         });
-        const colorcode = ['','#ff0000','#ff6600','#ffff00','#99ff33','#33cc33']
+        const colorcode = ['', '#ff0000', '#ff6600', '#ffff00', '#99ff33', '#33cc33']
         const data = await getLocation();
         if (data.status == 'success') {
             for (const feature of data.data) {
@@ -118,10 +138,10 @@ if (pgtitle == 'mapview') {
     fn()
 }
 
-if(pgtitle=='updateform'){
+if (pgtitle == 'updateform') {
     document.getElementById('submit').addEventListener("click", updateForm)
 }
 
-if(pgtitle=='logout'){
-    document.getElementsByTagName('button')[0].addEventListener("click",performLogout)
+if (pgtitle == 'logout') {
+    document.getElementsByTagName('button')[0].addEventListener("click", performLogout)
 }

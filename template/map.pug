@@ -9,5 +9,38 @@ html
         script(src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js')
         link(href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet')
     body
+        .pagecontainer__root
+            header.container__header
+                nav.wrapper__header.nav__appbar
+                    .content__container.content__wrapper
+                        .section__content.section__left
+                            ul.header__list.desktop__view
+                                li
+                                    img.image__header.tab__link.tab__logo(alt='Kgp logo' src='/img/kgplogo.png')
+                                li
+                                    h1(class='heading-font' style='align=center ')= 'Safety Map'
+                        .section__content.section__right
+                            ul.header__list.desktop__view
+                                if data.isLoggedIn
+                                    li=`You are logged in as ${data.name}`
+                                if data.isLoggedIn
+                                    li
+                                        #sign-up.tab__link.register__btn
+                                            button.basic__button.btn__medium.btn_purple(id='home-button') Home
+                                if !data.isLoggedIn
+                                    li
+                                        #sign-up.tab__link.register__btn
+                                            button.basic__button.btn__medium.btn_purple(id='login-button') Login
+                                if data.isLoggedIn
+                                    li
+                                        #sign-up.tab__link.register__btn
+                                            button.basic__button.btn__medium.btn_purple(id='logout-button') Logout
+                                            
+
         div(id='map')
+        div(class="map-overlay-container")
+            div(class="map-overlay")
+                h2(id="location-title")= "Safety Scores"
+                img(class="saftey-scr" src='/img/safteyscore.png')
+            
         script(src='/js/bundle.js')
