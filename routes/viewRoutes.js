@@ -6,5 +6,6 @@ const router = express.Router();
 router.get('/login',viewsController.getLoginPage)
 router.get('/navigator',authController.protect,viewsController.getNavigator)
 router.get('/updateform',authController.protect,viewsController.getUpdateForm)
-router.get('/',viewsController.getMap)
+router.get('/map',viewsController.getMap)
+router.get('/',viewsController.getLandingPage)
 module.exports = router;

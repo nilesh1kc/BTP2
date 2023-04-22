@@ -5582,15 +5582,19 @@ exports.updateForm = updateForm;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.redirectToUpdate = exports.redirectToMaps = void 0;
+exports.redirectToUpdate = exports.redirectToMaps = exports.redirectToHome = void 0;
 var redirectToUpdate = function redirectToUpdate() {
   window.location.href = "/updateform";
 };
 exports.redirectToUpdate = redirectToUpdate;
 var redirectToMaps = function redirectToMaps() {
-  window.location.href = "/";
+  window.location.href = "/map";
 };
 exports.redirectToMaps = redirectToMaps;
+var redirectToHome = function redirectToHome() {
+  window.location.href = "/";
+};
+exports.redirectToHome = redirectToHome;
 },{}],"logout.js":[function(require,module,exports) {
 "use strict";
 
@@ -5711,6 +5715,7 @@ if (pgtitle == 'navigator') {
   var buttons = document.getElementsByTagName('button');
   buttons[0].addEventListener("click", _navigator.redirectToUpdate);
   buttons[1].addEventListener("click", _navigator.redirectToMaps);
+  buttons[2].addEventListener("click", _navigator.redirectToHome);
 }
 if (pgtitle == 'mapview') {
   var fn = /*#__PURE__*/function () {
@@ -5735,7 +5740,7 @@ if (pgtitle == 'mapview') {
             if (homebtn) {
               console.log("OK from home");
               homebtn.addEventListener("click", function () {
-                location.href = '/navigator';
+                location.href = '/';
               });
             }
             mapboxgl.accessToken = 'pk.eyJ1IjoibmlsZXNobmtjIiwiYSI6ImNsZzlkc25tMDBvaGIzZ3Qzbmo0aXA1OWcifQ.pGCfpsT-o2xCcAjFwhT6Ew';
@@ -5827,6 +5832,26 @@ if (pgtitle == 'updateform') {
 }
 if (pgtitle == 'logout') {
   document.getElementsByTagName('button')[0].addEventListener("click", _logout.performLogout);
+}
+if (pgtitle == 'landingpage') {
+  console.log("Entered");
+  var collapseButton = document.querySelector("#collapse");
+
+  //collapseButton.onclick = event => {
+
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  //alert('Hello'+coll.length);
+  //for (i = 0; i < coll.length; i++) {
+  // coll[0].addEventListener("click", function () {
+  //     this.classList.toggle("active");
+  //     var content = this.nextElementSibling;
+  //     if (content.style.display === "block") {
+  //         content.style.display = "none";
+  //     } else {
+  //         content.style.display = "block";
+  //     }
+  // });
 }
 },{"./login":"login.js","./map":"map.js","./updateform":"updateform.js","./navigator":"navigator.js","./logout":"logout.js"}]},{},["index.js"], null)
 //# sourceMappingURL=/bundle.js.map
