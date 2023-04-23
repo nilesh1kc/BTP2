@@ -1,7 +1,7 @@
 import { callLogin } from './login';
 import { getLocation } from './map';
 import { updateForm } from './updateform';
-import { redirectToMaps, redirectToUpdate } from './navigator';
+import { redirectToMaps, redirectToUpdate,redirectToHome } from './navigator';
 import { performLogout } from './logout';
 const pgtitle = document.getElementsByTagName('title')[0].id
 if (pgtitle == 'login') {
@@ -50,6 +50,7 @@ if (pgtitle == 'navigator') {
     const buttons = document.getElementsByTagName('button')
     buttons[0].addEventListener("click", redirectToUpdate)
     buttons[1].addEventListener("click", redirectToMaps)
+    buttons[2].addEventListener("click", redirectToHome)
 }
 
 if (pgtitle == 'mapview') {
@@ -62,15 +63,15 @@ if (pgtitle == 'mapview') {
             });
         }
         const logoutbtn = document.getElementById('logout-button');
-        if(logoutbtn){
+        if (logoutbtn) {
             console.log("OK from logout")
             logoutbtn.addEventListener("click", performLogout);
         }
         const homebtn = document.getElementById('home-button');
-        if(homebtn){
+        if (homebtn) {
             console.log("OK from home")
             homebtn.addEventListener("click", () => {
-                location.href = '/navigator'
+                location.href = '/'
             });
         }
 
@@ -144,4 +145,25 @@ if (pgtitle == 'updateform') {
 
 if (pgtitle == 'logout') {
     document.getElementsByTagName('button')[0].addEventListener("click", performLogout)
+}
+
+if (pgtitle == 'landingpage') {
+    console.log("Entered")
+    const collapseButton = document.querySelector("#collapse");
+
+    //collapseButton.onclick = event => {
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    //alert('Hello'+coll.length);
+    //for (i = 0; i < coll.length; i++) {
+    // coll[0].addEventListener("click", function () {
+    //     this.classList.toggle("active");
+    //     var content = this.nextElementSibling;
+    //     if (content.style.display === "block") {
+    //         content.style.display = "none";
+    //     } else {
+    //         content.style.display = "block";
+    //     }
+    // });
 }

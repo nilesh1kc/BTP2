@@ -5,12 +5,12 @@ const AppError = require('../utils/appError');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 
-exports.getLoginPage = async(req, res) => {
-  if(req.cookies.jwt){
+exports.getLoginPage = async (req, res) => {
+  if (req.cookies.jwt) {
     const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
     const currentUser = await User.findById(decoded.id);
-    if (currentUser){
-      return res.status(200).render('logout',{
+    if (currentUser) {
+      return res.status(200).render('logout', {
         name: currentUser.name,
         msg: 'Looks like you are already logged in!'
       })
@@ -19,27 +19,49 @@ exports.getLoginPage = async(req, res) => {
   res.status(200).render('login');
 }
 
-exports.getNavigator = (req, res) => {
-  res.status(200).render('navigator')
-}
-
-exports.getUpdateForm = (req, res) => {
-  // console.log("Running Forms")
-  const data = {
-    title: "BTP",
-  }
-  res.status(200).render('updateform',{data})
-}
-exports.getMap = catchAsync(async(req, res) => {
+exports.getNavigator = catchAsync(async(req, res) => {
   let data = {
-    title: "BTP"
+    title: "AnnoMap"
   }
-  if(req.cookies.jwt){
+  if (req.cookies.jwt) {
     const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
     const currentUser = await User.findById(decoded.id);
     data.isLoggedIn = true;
     data.name = currentUser.name
   }
-  res.status(200).render('map',{data})
+  res.status(200).render('navigator',{data})
+})
+
+exports.getUpdateForm = (req, res) => {
+  // console.log("Running Forms")
+  const data = {
+    title: "AnnoMap",
+  }
+  res.status(200).render('updateform', { data })
+}
+exports.getMap = catchAsync(async (req, res, next) => {
+  let data = {
+    title: "AnnoMap"
+  }
+  if (req.cookies.jwt) {
+    const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+    const currentUser = await User.findById(decoded.id);
+    data.isLoggedIn = true;
+    data.name = currentUser.name
+  }
+  res.status(200).render('map', { data })
 }
 );
+
+exports.getLandingPage = catchAsync(async (req, res, next) => {
+  const data = {
+    title: "AnnoMap"
+  }
+  if (req.cookies.jwt) {
+    const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+    const currentUser = await User.findById(decoded.id);
+    data.isLoggedIn = true;
+    data.name = currentUser.name
+  }
+  res.status(200).render('landingpage', {data})
+})
