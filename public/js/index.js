@@ -141,6 +141,7 @@ if (pgtitle == 'mapview') {
 
 if (pgtitle == 'updateform') {
     document.getElementById('submit').addEventListener("click", updateForm)
+    document.getElementById('home').addEventListener("click", redirectToHome)
 }
 
 if (pgtitle == 'logout') {
