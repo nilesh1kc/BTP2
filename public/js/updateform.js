@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const updateForm = async(e)=>{
     e.preventDefault();
+    console.log("Entering")
     const longitude = document.getElementsByTagName("input")[0].value;
     const lattitude = document.getElementsByTagName("input")[1].value;
     const type = document.getElementsByTagName("select")[0].value;
@@ -27,5 +28,7 @@ export const updateForm = async(e)=>{
         };
         const res = await axios(config)
         alert(res.data.message)
+    }else{
+        alert("Please fill the required fields");
     }
 }

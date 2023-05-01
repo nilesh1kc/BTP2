@@ -5534,13 +5534,14 @@ var updateForm = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           e.preventDefault();
+          console.log("Entering");
           longitude = document.getElementsByTagName("input")[0].value;
           lattitude = document.getElementsByTagName("input")[1].value;
           type = document.getElementsByTagName("select")[0].value;
           similarity = document.getElementsByTagName("input")[2].value;
           frequency = document.getElementsByTagName("input")[3].value;
           if (!(longitude && lattitude && (frequency || similarity))) {
-            _context.next = 13;
+            _context.next = 16;
             break;
           }
           data = {
@@ -5560,12 +5561,16 @@ var updateForm = /*#__PURE__*/function () {
             },
             data: data
           };
-          _context.next = 11;
+          _context.next = 12;
           return (0, _axios.default)(config);
-        case 11:
+        case 12:
           res = _context.sent;
           alert(res.data.message);
-        case 13:
+          _context.next = 17;
+          break;
+        case 16:
+          alert("Please fill the required fields");
+        case 17:
         case "end":
           return _context.stop();
       }
@@ -5829,6 +5834,7 @@ if (pgtitle == 'mapview') {
 }
 if (pgtitle == 'updateform') {
   document.getElementById('submit').addEventListener("click", _updateform.updateForm);
+  document.getElementById('home').addEventListener("click", _navigator.redirectToHome);
 }
 if (pgtitle == 'logout') {
   document.getElementsByTagName('button')[0].addEventListener("click", _logout.performLogout);

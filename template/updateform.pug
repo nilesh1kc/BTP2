@@ -8,7 +8,8 @@ html
         link(href='https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Niconne&display=swap' rel='stylesheet')
         title(id='updateform')= data.title
 
-    body   
+    body
+         
         section.contact-container(style='box-shadow: black 0px 0px 10px;')
             div(style='width: 100px; color: white; padding-left: 40px;')
                 br
@@ -34,7 +35,6 @@ html
             form.contact-form(style='z-index: 1000; box-shadow: black 0px 0px 10px;' action='/action_page.php')
                 .heading
                     h2 UPDATE MAP
-                    p
                 .input
                     a Lattitude: 
                     i.fa-regular.fa-user
@@ -63,5 +63,6 @@ html
                     input(name='longitude' type='number' required='')
                 br
                 input.button(id='submit' type='submit' value='Submit')
+                input.button1(id='home' style='width:18%' value='Home')
             img#img1(src='/img/gif2.gif' style='height: 50vh; margin-top: 40px;')
         script(src='/js/bundle.js')

@@ -18,7 +18,7 @@ html
                                 li
                                     img.image__header.tab__link.tab__logo(alt='Kgp logo' src='/img/kgplogo.png')
                                 li
-                                    h1(class='heading-font' style='align=center ')= 'Safety Map'
+                                    h1(class='heading-font' style='align=center ')= 'Safety Map' 
                         .section__content.section__right
                             ul.header__list.desktop__view
                                 if data.isLoggedIn
@@ -35,12 +35,30 @@ html
                                     li
                                         #sign-up.tab__link.register__btn
                                             button.basic__button.btn__medium.btn_purple(id='logout-button') Logout
-                                            
+
 
         div(id='map')
         div(class="map-overlay-container")
             div(class="map-overlay")
                 h2(id="location-title")= "Safety Scores"
                 img(class="saftey-scr" src='/img/safetyscore_edit.jpg')
-            
+        div.footer-container
+            footer.site-footer
+                //- .container
+                .row
+                    .column.containerpos0
+                        h6 Locate Us
+                        a(href='https://www.google.com/maps/place/Department+of+Computer+Science+and+Engineering/@22.3163845,87.3087226,18z/data=!4m9!1m2!2m1!1siit+kharagpur+computer+science+mobile+research+lab!3m5!1s0x3a1d44048085d96d:0x44f7d693580b9569!8m2!3d22.3178417!4d87.3091834!15sCjJpaXQga2hhcmFncHVyIGNvbXB1dGVyIHNjaWVuY2UgbW9iaWxlIHJlc2VhcmNoIGxhYlo0IjJpaXQga2hhcmFncHVyIGNvbXB1dGVyIHNjaWVuY2UgbW9iaWxlIHJlc2VhcmNoIGxhYpIBCnVuaXZlcnNpdHk') IIT Kharagpur, West Bengal
+                    .column.containerpos
+                        h6 Contact Us
+                        a(href='mailto:') nilesh01@iitkgp.ac.in
+                hr
+                .containerpos1
+                    .col-md-8.col-sm-6.col-xs-12
+                        p.copyright-text
+                            | Copyright &copy; 2023 All Rights Reserved, DriveIn by 
+                            a(href='https://cse.iitkgp.ac.in/resgrp/ubinet/index.html' target='_blank') UbiNet 
+                            a(href='http://www.iitkgp.ac.in') , IIT Kharagpur
+                            | .
         script(src='/js/bundle.js')
+
